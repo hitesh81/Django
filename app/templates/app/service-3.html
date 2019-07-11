@@ -1,0 +1,181 @@
+{% load static %}
+<html>
+<html lang="en"> 
+
+<!-- Mirrored from 115.160.244.10:8084/themeforest/easyliving/service-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Mar 2019 08:27:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> 
+    
+    <!-- Title -->
+    <title>apps</title> 
+    
+    <!-- favicon icon -->
+    <link rel="icon" href="{% static '/apps/images/favicon.ico' %}">
+    
+    <!-- Icons -->
+    <link href="{% static '/apps/css/font-awesome.min.css' %}" rel="stylesheet"><!-- font-awesome.min css -->
+    <link href="{% static '/apps/css/custom-icons.css' %}" rel="stylesheet"><!-- custom-icons css -->
+    <!-- CSS Stylesheet -->
+    <link href="{% static '/apps/css/bootstrap.css' %}" rel="stylesheet"><!-- bootstrap.min css -->
+    <link href="{% static '/apps/css/slick.css' %}" rel="stylesheet"><!-- slick css -->
+    <link href="{% static '/apps/css/slick-theme.css' %}" rel="stylesheet"><!-- slick-theme css -->
+    <link href="{% static '/apps/css/bootstrap-select.css' %}" rel="stylesheet"><!-- bootstrap selectbox css -->
+    <link href="{% static '/apps/css/bootstrap-datetimepicker.css' %}" rel="stylesheet"><!-- datetimepicker css --> 
+    <link href="{% static '/apps/css/style.css' %}" rel="stylesheet"><!-- style css --> 
+    <link href="{% static '/apps/css/css3.css' %}" rel="stylesheet"><!-- css3 css -->
+    <link href="{% static '/apps/css/theme/theme-1.css' %}" rel="stylesheet" id="switch_style"><!-- style css --> 
+    <style type="text/css">
+span{
+    color: red;
+}
+</style>
+<script type="text/javascript">
+    function validation(){
+        var user =document.getElementById('uname').value;
+        
+        var mob =document.getElementById('umob').value;
+        var mail =document.getElementById('uemail').value;
+        var pin =document.getElementById('upin').value;
+        var add =document.getElementById('uadd').value;
+        
+
+        if (user == ""){
+            document.getElementById('fname').innerHTML="** PLEASE FILL THE USERNAME";
+            return false;
+            }
+        if((user.length < 2) || (user.length > 20)){
+              document.getElementById('fname').innerHTML="**USERNAME length must be between 2 and 20";
+            return false;   
+            }
+        if(!isNaN(user)){
+              document.getElementById('fname').innerHTML="**USERNAME is contains only characters";
+            return false;   
+            }
+       
+        if (mob == ""){
+            document.getElementById('fmob').innerHTML="** PLEASE FILL THE MOBILE NUMBER";
+            return false;
+        }
+        if (isNaN(mob)){
+            document.getElementById('fmob').innerHTML="** MUST FILL DIGIT ONLY";
+            return false;
+        }
+        if (mob.length!=10){
+            document.getElementById('fmob').innerHTML="** NUMBER MUST HAVE AT LEAST 10 DIGITS";
+            return false;
+        }
+        if (mail == ""){
+            document.getElementById('femail').innerHTML="** PLEASE FILL THE E-MAIL";
+            return false;
+        }
+        if (mail.indexOf('@') <= 0){
+            document.getElementById('femail').innerHTML="** @ INVALID POSITION";
+            return false;
+        }
+        if ((mail.charAt(mail.length-4) != '.') && (mail.charAt(mail.length-3) != '.')) {
+            document.getElementById('femail').innerHTML="** '.'INVALID POSITION";
+            return false;
+        }
+         if (pin.length!=6){
+            document.getElementById('fpin').innerHTML="** PINCODE MUST HAVE AT LEAST 6 DIGITS";
+            return false;
+        }
+
+        if (add == ""){
+            document.getElementById('fadd').innerHTML="** PLEASE FILL THE ADDRESS";
+            return false;
+        }
+
+
+    }
+</script>
+
+</head>  
+
+
+<body>
+
+        <!-- Content Start -->
+        <div id="content">
+        	<!-- Service Detail -->
+            <section class="service-detail-wrapper">
+            	<div class="container" style="background:#FFE4E1;">
+                	<div class="top-desc text-center" style=" background:coral; border-radius:60px">
+                        <h2 style="color:white; padding-top:30px;">Personal Detail</h2>
+                    </div>
+                    <div class="row" style="padding-top:25px;">
+                    	<div class="col-md-9 col-md-offset-3">
+                        	                        	<form method="POST" action="{% url 'finalbooking'  %}" onclick="return validation()">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{service_id}}" name="service_id">
+                                <input type="hidden" name="appdate" value="{{orderdate}}">
+                                <input type="hidden" name="apptime" value="{{ordertime}}">
+                                <input type="hidden" name="subcat" value="{{subname}}">
+                            	 <div class="col-sm-8">
+                                    <div class="form-group">
+                                		<input type="text" class="form-control" placeholder="Your Name" name="username" id="uname"/>
+                                        <td><span id="fname"></span></td>
+                                    </div>
+                                   </div>
+
+                                    <div class="col-sm-8">
+                                    	<div class="form-group">
+                                        	<input type="text" class="form-control" placeholder="Mobile Number" name="mobile" id="umob"/>
+                                            <td><span id="fmob"></span></td>
+                                        </div>
+                                   </div>
+
+
+                                	<div class="col-sm-8">
+                                    	<div class="form-group">
+                                        	<input type="email" class="form-control" placeholder="Email" name="email" id="uemail"/>
+                                            <td><span id="femail"></span></td>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-8">
+                                    	<div class="form-group">
+                                        	<input type="text" class="form-control" placeholder="Pin Code" name="pincode" id="upin"/>
+                                            <td><span id="fpin"></span></td>
+                                        </div>
+                                    </div>
+
+
+                                	<div class="col-sm-8">
+                                    	<div class="form-group">
+                                        	<textarea class="form-control" placeholder="Address" name="address" id="uadd"></textarea>
+                                            <td><span id="fadd"></span></td>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group text-center">
+                                	<div class="group-btn">
+                                    	<a href="{% url 'service2' %}" class="btn btn-info">Back</a>
+                                        <input type="submit" class="btn btn-info" value="Book">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+ <!-- JavaScript files -->
+    <script src="{% static '/apps/js/jquery-1.12.4.min.js' %}"></script><!-- jquery-1.12.4.min js-->
+    <script src="{% static '/apps/js/bootstrap.min.js' %}"></script><!-- bootstrap.min js-->
+    <script src="{% static '/apps/js/slick.min.js' %}"></script><!-- slick js-->
+    <script src="{% static '/apps/js/bootstrap-select.min.js' %}"></script><!-- Bootstrap selectbox js-->
+    <script src="{% static '/apps/js/waypoints.min.js' %}"></script> 
+	<script src="{% static '/apps/js/jquery.counterup.min.js' %}"></script><!-- counter js -->
+    <script src="{% static '/apps/js/custom.js' %}"></script><!-- custom js--> 
+</body>
+
+<!-- Mirrored from 115.160.244.10:8084/themeforest/easyliving/service-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Mar 2019 08:27:26 GMT -->
+</html>

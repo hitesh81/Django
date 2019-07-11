@@ -1,0 +1,123 @@
+{% extends "app/header.html "%}
+
+{% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>apps</title>
+    <link rel="icon" href="{% static '/apps/images/favicon.ico' %}">
+    <link href="{% static '/apps/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/custom-icons.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/slick.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/slick-theme.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/bootstrap-select.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/bootstrap-datetimepicker.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/style.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/css3.css' %}" rel="stylesheet">
+    <link href="{% static '/apps/css/theme/theme-1.css' %}" rel="stylesheet" id="switch_style">
+    <style type="text/css">
+    span{
+    color: red;
+    }
+    </style>
+<script type="text/javascript">
+    function validation(){
+        var mail =document.getElementById('uemail').value;
+        var pass =document.getElementById('upass').value;
+        if(mail == ""){
+            document.getElementById('femail').innerHTML="** PLEASE FILL THE E-MAIL";
+            return false;
+        }
+        else if(mail.indexOf('@') <= 0){
+            document.getElementById('femail').innerHTML="** @ INVALID POSITION";
+            return false;
+        }
+        else if((mail.charAt(mail.length-4) != '.') && (mail.charAt(mail.length-3) != '.')) {
+            document.getElementById('femail').innerHTML="** '.'INVALID POSITION";
+            return false;
+        }
+        else if(mail){
+            document.getElementById('femail').innerHTML="";
+        }
+
+        if(pass == ""){
+            document.getElementById('fpass').innerHTML="** PLEASE FILL THE PASSWORD";
+            return false;
+        }
+        else if((pass.length <= 6) || (pass.length > 12)){
+            document.getElementById('fpass').innerHTML="** PASSWORD MUST BE BETWEEN 6 AND 12";
+            return false;
+        }
+        else if(pass){
+            document.getElementById('fpass').innerHTML="";
+        }
+
+}
+</script>
+{% block body%}
+        <div id="content">
+            <section class="service-detail-wrapper">
+                <div class="container">
+                    <div class="top-desc text-center">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="row">
+                    {% if message %}
+                    <p class="text-danger text-center">{{message}}</p>
+                    {% endif %}
+                        <div class="col-md-8 col-md-offset-3">
+                            <form method="POST" action="{% url 'login_evaluation' %}"onsubmit="return validation()" >
+                            {% csrf_token %}
+                                <div class="row">
+                                   <div class="col-sm-8">
+                                        <div class="form-group">
+                                        <select class="form-control" name="role">
+                                            <option class="hidden" selected disabled>Role</option>
+                                            <option value="serviceprovider">Serviceprovider</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                        </div>
+                                     </div>
+                                     <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <input name="email" class="form-control" placeholder="Email" type="email" name="uemail" id="uemail">
+                                            <td><span id="femail"></span></td>
+                                        </div>
+                                    </div>
+                                        <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <input class="form-control" name="password" placeholder="Password" type="password" id="upass">
+                                            <td><span id="fpass"></span></td>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                    <div class="group-btn">
+                                        <div class="col-sm-9">
+                                        <input type="submit" class="btn btn-info" value="login">
+                                        <div class="text-center" ><a href="{% url 'forgotPage' %}" class="text-center">Forgot password?</a></div>
+                                            <div class="text-center" ><a href="{% url 'registrationpage' %}" class="text-center">Don't have an account? Register</a>
+                                            </div>
+                                         </div>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+   <script src="{% static 'apps/js/jquery-1.12.4.min.js' %}"></script><!-- jquery-1.12.4.min js-->
+    <script src="{% static 'apps/js/bootstrap.min.js' %}"></script><!-- bootstrap.min js-->
+    <script src="{% static 'apps/js/slick.min.js' %}"></script><!-- slick js-->
+    <script src="{% static 'apps/js/bootstrap-select.min.js' %}"></script><!-- Bootstrap selectbox js-->
+    <script src="{% static 'apps/js/custom.js' %}"></script><!-- custom js-->
+    <script type="text/javascript" src="{% static 'apps/js/jquery-1.6.1.min.js' %}"></script>
+    <script src="{% static 'apps/js/jquery.dd.js' %}"></script><!-- selectbox js-->
+{% endblock %}

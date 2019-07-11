@@ -1,0 +1,70 @@
+{% load static %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>A2Z a Corporate Category Flat Bootstrap Responsive Website Template | Services :: w3layouts</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="A2Z Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //for-mobile-apps -->
+	<link href="{% static 'app/css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'app/css/font-awesome.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'app/css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- //breadcrumbs -->
+	<!--form-->
+
+
+
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+		  <!-- Tabs Titles -->
+		  <h2 class="active"> Sign Up </h2>
+
+		  <!-- Icon -->
+		  <div class="fadeIn first">
+			<img src="{% static 'app/images/Login.png'%}" id="icon" alt="User Icon" />
+		  </div>
+
+		  <!-- Login Form -->
+		  <form action="{% url 'userregister' %}" method="post">
+            {% csrf_token %}
+
+			<input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+			<input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+			<input type="text" id="password" class="fadeIn second" name="password" placeholder="password">
+			<input type="text" id="confirmpassword" class="fadeIn second" name="confirmpassword" placeholder="confirm password">
+			<input type="submit" class="fadeIn fourth" value="DONE">
+		  </form>
+
+
+		</div>
+	  </div>
+
+
+</body>
+</html>

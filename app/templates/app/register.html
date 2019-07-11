@@ -1,0 +1,295 @@
+{% load static %}
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<link href="{% static '/apps/min.css' %}" rel="stylesheet" id="bootstrap-css">
+<script src="{% static '/apps/style.js' %}"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link href="{% static '/apps/login.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>apps</title>
+    <link rel="icon" href="{% static 'apps/images/favicon.ico' %}">
+    <link href="{% static 'apps/css/theme/theme-1.css' %}" rel="stylesheet" id="switch_style">
+    <link href="{% static 'apps/css/css3.css' %}" rel="stylesheet">
+    <link href="{% static 'apps/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'apps/css/bootstrap-select.css' %}" rel="stylesheet">
+       <link href="{% static 'apps/css/slick-theme.css' %}" rel="stylesheet">
+       <link href="{% static 'apps/css/slick.css' %}" rel="stylesheet">
+       <link href="{% static 'apps/css/custom-icons.css' %}" rel="stylesheet">
+       <link href="{% static 'apps/css/font-awesome.min.css' %}" rel="stylesheet">
+
+       <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>-->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
+    <script src="{% static 'apps/js/jquery.validate.js' %}"></script><!-- jquery-1.12.4.min js-->
+<link href="{% static '/apps/main.css' %}" rel="stylesheet">
+<!--<style type="text/css">
+span{
+    color: red;
+}
+</style>-->
+
+<style type="text/css">
+form label {
+  display: inline-block;
+  width: 100px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
+}
+</style>
+</head>
+
+<!-- Banner Section -->
+
+<div class="container register"style="background:-webkit-linear-gradient(left, #6c757d,#6c757d)" >
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.flaticon.com/icons/svg/62/62420.svg" alt="" />
+            <h3>Service Hub</h3>
+            <p>All type of services we are providing</p>
+            <form method="GET" action="{% url 'registration' %}"><input type="submit" name="" value="Login" /></form> <br />
+     </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                        aria-selected="true">User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                        aria-selected="false">Service</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <form class="tab-pane fade show active" id="first_form"  role="tabpanel" method="POST" action="{% url 'registration' %}" >
+                    {% csrf_token %}
+                    {% if message %}
+                    <p class="text-danger text-center">{{message}}</p>
+                    {% endif %}
+                    <h3 class="register-heading">User Rgistration</h3>
+                    <div class="row register-form">
+                        <input type="hidden" name="role" value="user"/>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="First Name *"
+                                    value="" id='name' />
+
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="form-control" name="address" placeholder="Your Address *" value=""id='uadd' /></textarea>
+                                 <td><span id="fadd"></span></td>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="contno" placeholder="Contact Number *" value="" id='umob' />
+
+                            </div>
+                             <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email *" value="" id='email' />
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password *"
+                                    value="" id='upass' />
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password *"
+                                    value=""id='cpass' />
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class ="form-group">
+                            <select class="form-control" name="city" placeholder="Your city" id='ucity'>
+                                <option class="form-control">Select your City</option>
+                                <option>Ahmedabad</option>
+                                <option>Vadodara</option>
+                                <option>Anand</option>
+                            </select>
+
+                            </div>
+                            <div class ="form-group">
+                            <select class="form-control" name="state" placeholder="Your State" id='ustate'>
+                                <option class="form-control">Select your State</option>
+                                <option>Gujarat</option>
+
+                            </select>
+                            </div>
+                            <div class ="form-group">
+                            <select class="form-control" name="country" placeholder="Your Country" id='ucountry'>
+                                <option class="form-control">Select your Country</option>
+                                <option>India</option>
+
+
+                            </select> <td>
+
+
+                            </div>
+                            <div class="">
+                                <input type="radio"  name="gender" value="Male" id="gender" />Male<br>
+                                <input type="radio"  name="gender" value="Female" id="gender"/>Female<br>
+                                <input type="radio"  name="gender" value="Other"id="gender" />Other
+
+                            </div>
+
+
+                            <input type="submit" class="btnRegister" id="submit" value="Register" />
+
+
+                </form>
+            </div>
+        </div>
+
+        <form class="tab-pane fade show" action="{% url 'registration' %}" method="POST" id="profile" role="tabpanel" name="frm" aria-labelledby="profile-tab" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <h3 class="register-heading">Register for Service Provider</h3>
+            <input type="hidden" name="role" value="serviceprovider"/>
+            <div class="row register-form">
+                <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name1" placeholder="First Name *"
+                                    value="" />
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="form-control" name="address1" placeholder="Your Address *" value="" /></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="contno1" placeholder="Contact Number *" value="" />
+                            </div>
+                             <div class="form-group">
+                                <input type="email" name="email1" class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password1" placeholder="Password *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="confirmpassword1" placeholder="Confirm Password *"
+                                    value="" />
+                            </div>
+
+                    </div>
+                        <div class="col-md-6">
+
+
+                            <div class ="form-group">
+                            <select class="form-control" name="city1" placeholder="Your city">
+                                <option class="form-control">Select your City</option>
+                                <option>Ahmedabad</option>
+                                <option>Vadodara</option>
+                                <option>Anand</option>
+                            </select>
+                            </div>
+                            <div class ="form-group">
+                            <select class="form-control" name="state1" placeholder="Your State">
+                                <option class="form-control">Select your State</option>
+                                <option>Gujarat</option>
+
+                            </select>
+                            </div>
+                            <div class ="form-group">
+                            <select class="form-control" name="country1" placeholder="Your Country">
+                                <option class="form-control">Select your Country</option>
+                                <option>India</option>
+
+                            </select>
+                            </div>
+                            <div class ="form-group">
+                            <select name="service" class="form-control" placeholder="Select your Service">
+                                <option class="form-control">Select your Service</option>
+                                {% for service in services %}
+                                    <option value="{{service.id}}">{{ service.Service_name }}</option>
+                                {% endfor %}
+                            </select>
+                            </div>
+                            <div class ="form-group">
+
+
+                            </div>
+                            <div>
+                                <input type="radio"  name="gender1" value="Male" />Male
+                                <input type="radio"  name="gender1" value="Female"/>Female
+                                <input type="radio"  name="gender1" value="Other" />Other
+                                <br>
+
+                            </div>
+
+
+                            <div class="form-group">
+                               <div class="name">Profile Image:</div>
+                                <input type="file" class="form-control" name="image" placeholder="Profile Image"
+                                    value="" id='id_image'/>
+
+                            </div>
+
+
+                            <input type="submit" class="btnRegister" value="Register" />
+                        </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<script>
+    // (function validateForm() {
+    //     var isValid = true;
+    //     $('#home').each(function () {
+    //         debugger;
+    //         if ($(this).val() === '')
+    //             isValid = false;
+    //     });
+    //     return isValid;
+    // }())
+</script>
+</div>
+<!-- JavaScript files -->
+
+    <script src="{% static 'apps/js/jquery-1.12.4.min.js' %}"></script><!-- jquery-1.12.4.min js-->
+    <script src="{% static 'apps/js/bootstrap.min.js' %}"></script><!-- bootstrap.min js-->
+    <script src="{% static 'apps/js/slick.min.js' %}"></script><!-- slick js-->
+    <script src="{% static 'apps/js/bootstrap-select.min.js' %}"></script><!-- Bootstrap selectbox js-->
+    <script src="{% static 'apps/js/custom.js' %}"></script><!-- custom js-->
+    <script type="text/javascript" src="{% static 'apps/js/jquery-1.6.1.min.js' %}"></script>
+    <script src="{% static 'apps/js/jquery.dd.js' %}"></script><!-- selectbox js-->
+    <script language="javascript" type="text/javascript"></script>

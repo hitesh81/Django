@@ -1,0 +1,179 @@
+{% load static %}
+<html>
+<html lang="en">
+
+<!-- Mirrored from 115.160.244.10:8084/themeforest/easyliving/service-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Mar 2019 08:27:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Title -->
+    <title>apps</title>
+
+    <!-- favicon icon -->
+    <link rel="icon" href="{% static '/apps/images/favicon.ico' %}">
+
+    <!-- Icons -->
+    <link href="{% static '/apps/css/font-awesome.min.css' %}" rel="stylesheet"><!-- font-awesome.min css -->
+    <link href="{% static '/apps/css/custom-icons.css' %}" rel="stylesheet"><!-- custom-icons css -->
+    <!-- CSS Stylesheet -->
+    <link href="{% static '/apps/css/bootstrap.css' %}" rel="stylesheet"><!-- bootstrap.min css -->
+    <link href="{% static '/apps/css/slick.css' %}" rel="stylesheet"><!-- slick css -->
+    <link href="{% static '/apps/css/slick-theme.css' %}" rel="stylesheet"><!-- slick-theme css -->
+    <link href="{% static '/apps/css/bootstrap-select.css' %}" rel="stylesheet"><!-- bootstrap selectbox css -->
+    <link href="{% static '/apps/css/bootstrap-datetimepicker.css' %}" rel="stylesheet"><!-- datetimepicker css -->
+    <link href="{% static '/apps/css/style.css' %}" rel="stylesheet"><!-- style css -->
+    <link href="{% static '/apps/css/css3.css' %}" rel="stylesheet"><!-- css3 css -->
+    <link href="{% static '/apps/css/theme/theme-1.css' %}" rel="stylesheet" id="switch_style"><!-- style css -->
+    <script type="text/javascript">
+    function isValidDate(dateStr) {
+
+ // Checks for the following valid date formats:
+ // MM/DD/YYYY
+ // Also separates date into month, day, and year variables
+ var datePat = /^(\d{2,2})(\/)(\d{2,2})\2(\d{4}|\d{4})$/;
+
+ var matchArray = dateStr.match(datePat); // is the format ok?
+ if (matchArray == null) {
+  alert("Date must be in MM/DD/YYYY format")
+  return false;
+ }
+
+ month = matchArray[1]; // parse date into variables
+ day = matchArray[3];
+ year = matchArray[4];
+ if (month < 1 || month > 12) { // check month range
+  alert("Month must be between 1 and 12");
+  return false;
+ }
+ if (day < 1 || day > 31) {
+  alert("Day must be between 1 and 31");
+  return false;
+ }
+ if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+  alert("Month "+month+" doesn't have 31 days!")
+  return false;
+ }
+ if (month == 2) { // check for february 29th
+  var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+  if (day>29 || (day==29 && !isleap)) {
+   alert("February " + year + " doesn't have " + day + " days!");
+   return false;
+    }
+ }
+ return true;  // date is valid
+} </script>
+</head>
+
+<style>
+
+
+
+
+</style>
+
+
+<body >
+
+     <div id="content" >
+        	<!-- Service Detail -->
+            <section class="service-detail-wrapper">
+            	<div class="container" style="background:#FFE4E1">
+                	<div class="top-desc text-center" style=" background:coral; border-radius:60px" >
+                        <h2 style="color:white; padding-top:30px;">Select service</h2>
+                    </div>
+                    <div class="row" style="padding-top:25px;">
+                    	<div class="col-md-9 col-md-offset-3">
+                        	<form method="POST" action="{% url 'service3' %}">
+                                 {% csrf_token %}
+                                 <!--Serivces-->
+                                 <input type="hidden" value="{{service_id}}" name="service_id">
+
+
+                                    <!--Sub-Serivces-->
+
+
+                                <div class="col-sm-11">
+                                 <div class="col-sm-9">
+                                    	<div class="form-group">
+                                        	<select class="selectpicker">
+                                                <option>Select Service</option>
+                                                <option>Plumbing</option>
+                                                <option>Electrical</option>
+                                                <option>Painting</option>
+                                                <option>Carpentry</option>
+                                            </select>
+                                        </div>
+                                 </div>
+
+                                 <div class="col-sm-9">
+                                    	<div class="form-group">
+                                        	<select class="selectpicker">
+                                                <option>Select Sub Service</option>
+                                                <option>Installation, Repair or Replacement:</option>
+                                                <option>Drain Cleaning and Sewers</option>
+                                                <option>Maintenance, Repair and Care</option>
+                                            </select>
+                                        </div>
+                                 </div>
+
+                                <div class="col-sm-9">
+
+<div class="form-group">
+    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+    	<input class="form-control" size="16" type="text" value="" readonly name="appdate">
+    	<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+    </div>
+</div>
+                                    </div>
+                                    <div class="col-sm-9">
+<div class="form-group">
+    <div class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+    	<input class="form-control" size="16" type="text" value=""  readonly name="apptime">
+    	<span class="input-group-addon"><span class="fa fa-clock-o"></span></span>
+    </div>
+</div>
+
+
+                                <div class="form-group text-center">
+                                	<div class="group-btn">
+                                    	<a href="{% url 'index' %}" style="background:blue" class="btn btn-info" >Back</a>
+                                    	<input type="submit" class="btn btn-info" style="background:blue"  value="Next" >
+                                    </div>
+                                </div>
+                                <div class="scedule-detail">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="{% static '/apps/js/jquery-1.12.4.min.js' %}"></script><!-- jquery-1.12.4.min js-->
+
+    <script src="{% static '/apps/js/bootstrap.min.js' %}"></script><!-- bootstrap.min js-->
+    <script src="{% static '/apps/js/bootstrap-datetimepicker.min.js' %}"></script> <!-- Bootstrap datetimepicker js-->
+    <script src="{% static '/apps/js/slick.min.js' %}"></script><!-- slick js-->
+    <script src="{% static '/apps/js/bootstrap-select.min.js' %}"></script><!-- Bootstrap selectbox js-->
+    <script src="{% static '/apps/js/waypoints.min.js' %}"></script>
+	<script src="{% static '/apps/js/jquery.counterup.min.js' %}"></script><!-- counter js -->
+
+    <script src="{% static '/apps/js/custom.js' %}"></script><!-- custom js-->
+    <script type="text/javascript">
+
+
+	</script>
+
+</body>
+
+<!-- Mirrored from 115.160.244.10:8084/themeforest/easyliving/service-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Mar 2019 08:27:26 GMT -->
+</html>

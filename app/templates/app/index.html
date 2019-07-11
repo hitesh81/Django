@@ -1,0 +1,178 @@
+{% extends "app/header.html" %}
+{% load static %}
+
+
+{% csrf_token %}
+	<!-- header -->
+		<!-- banner bottom -->
+		{% block body %}
+		<div class="banner-btm" style="background:white">
+			<div class="container">
+				<div class="banner-bottom-main">
+					<div class="col-md-4 banner-btmg1">
+
+						<div class="form-text">
+							<h3>Looking for a Handyman?</h3>
+							<p>We solve your Home repair needs!</p>
+							<img src="{% static 'app/images/f1.png' %}" alt="" />
+						</div>
+						<form action="" method="post" class="banner_form">
+							{% csrf_token %}
+							<input type="hidden" value="{{service_id}}" name="service_id">
+							<input type="hidden" value="{{subname}}" name="subcat">
+							<input type="hidden" value="{{orderdate}}" name="appdate">
+							<input type="hidden" value="{{ordertime}}" name="apptime">
+							<div class="sec-left">
+								<label class="contact-form-text">Name</label>
+								<input placeholder="your name " name="username" type="text" required="">
+							</div>
+							<div class="sec-right">
+								<label class="contact-form-text">Email</label>
+								<input placeholder="xxx@xx.com " name="email" type="email" required="">
+							</div>
+							<div class="sec-left">
+								<label class="contact-form-text">Mobile no.</label>
+								<input placeholder=" XXXXXX" name="mobile" type="text" required="">
+							</div>
+							<div class="form-tx">
+								<label class="contact-form-text">Address</label>
+								<textarea placeholder="your address" name="address" required=""></textarea>
+							</div>
+							<div class="sec-left">
+								<label class="contact-form-text">Pincode</label>
+								<input placeholder="pincode" name="pincode" type="text" required="">
+							</div>
+
+
+							<input type="submit" value="Submit">
+						</form>
+					</div>
+					<div class="col-md-8 banner-btm-grid2">
+						<div class="col-md-4 banner-grid2">
+							<div class="banner-subg1">
+								<h3>maintenance</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+								<span class="fa fa-cog" aria-hidden="true"></span>
+								<div class="read-btn">
+									<a href="about.html">view more</a>
+								</div>
+							</div>
+							<div class="banner-subg1">
+								<h3>cleaning</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+								<span class="fa fa-check-square-o" aria-hidden="true"></span>
+								<div class="read-btn">
+									<a href="about.html">view more</a>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-md-4 banner-grid2">
+							<div class="banner-subg1">
+								<h3>repair</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+								<span class="fa fa-yelp" aria-hidden="true"></span>
+								<div class="read-btn">
+									<a href="about.html">view more</a>
+								</div>
+							</div>
+							<div class="banner-subg1">
+								<h3>improvement</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit estibulum nibh urna scing.</p>
+								<span class="fa fa-gg" aria-hidden="true"></span>
+								<div class="read-btn">
+									<a href="about.html">view more</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!-- //banner bottom -->
+		<!-- about -->
+		<div class="agile-about-main">
+			<div class="col-md-4 about-left">
+				<div class="about-main-bg text-center">
+					<h4 class="about-title">Why</h4>
+					<h4 class="sub">
+						<span>c</span>hoose
+						<span>u</span>s?</h4>
+				</div>
+			</div>
+			<div class="col-md-8 about-bottom-g1">
+				<h4>One Stop Solution for your Complete Home Maintenance</h4>
+				<!-- <h4>get easy home repairs and upgrades with professional home service providers</h4> your complete home solution.-->
+				<div class="about-grid">
+					<div class="about-bottom-right">
+						<div class="abouthome-grid">
+							<span class="hi-icon hi-icon-archive fa fa-check"> </span>
+						</div>
+						<div class="about-bottom">
+							<h5>vision</h5>
+							<p>Consectetur adipiscing elit estibulum nibh urna</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="about-bottom-right">
+						<div class="abouthome-grid">
+							<span class="hi-icon hi-icon-archive  fa fa-book"> </span>
+						</div>
+						<div class="about-bottom">
+							<h5>affordable</h5>
+							<p>Elit consectetur adipiscing estibulum nibh urna</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class=" about-bottom-right">
+						<div class="abouthome-grid">
+							<span class="hi-icon hi-icon-archive fa fa-photo"> </span>
+						</div>
+						<div class="about-bottom">
+							<h5>quality</h5>
+							<p>Consectetur adipiscing elit estibulum nibh urna</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class=" about-bottom-right">
+						<div class="abouthome-grid">
+							<span class="hi-icon hi-icon-archive fa fa-briefcase"> </span>
+						</div>
+						<div class="about-bottom">
+							<h5>24*7 support</h5>
+							<p>Adipiscing consectetur elit estibulum nibh urna</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="abt-img">
+					<img src="{% static 'app/images/a1.png' %}" alt="" class="img-responsive" />
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+
+	<!-- //about -->
+	<!--  about bottom -->
+	<div class="w3ls-section" style="background:white">
+		<div class="container">
+			<div class="main-bottom">
+				<div class="col-md-6 col-sm-6 mb-left">
+
+				</div>
+				<div class="col-md-6 col-sm-6 mb-right">
+					<h4>service you can trust</h4>
+					<p>protect all your home appliances & systems.</p>
+					<a href="services.html">view all services</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  //about bottom -->
+
+
+{% endblock %}
